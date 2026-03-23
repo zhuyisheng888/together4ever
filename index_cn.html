@@ -35,6 +35,7 @@
         section { padding: 80px 10%; }
         h2 { text-align: center; color: var(--p-color); margin-bottom: 50px; font-size: 2.2rem; }
         
+        /* 소개 섹션 레이아웃 */
         .about-content { display: flex; align-items: flex-start; gap: 60px; background: var(--s-color); padding: 50px; border-radius: 25px; }
         .profile-container { flex-shrink: 0; text-align: center; width: 280px; }
         .director-img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 5px solid white; object-fit: cover; }
@@ -43,6 +44,7 @@
         .director-name-cn { font-weight: bold; font-size: 1.4rem; display: block; margin-bottom: 3px; }
         .director-title-cn { font-weight: normal; font-size: 0.9rem; opacity: 0.9; }
         
+        .about-text { flex-grow: 1; }
         .about-text p { color: #555; }
         .career-section { margin-top: 30px; }
         .career-section h4 { color: var(--p-color); border-left: 5px solid var(--a-color); padding-left: 10px; margin-bottom: 15px; text-align: left; }
@@ -64,11 +66,16 @@
         footer { background: #2a2a2a; color: #b0b0b0; padding: 50px 10%; text-align: center; }
         .footer-names { color: white; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
         
-        @media (max-width: 992px) { .about-content { flex-direction: column; align-items: center; text-align: center; } .profile-container { width: 220px; margin-bottom: 30px; } }
+        /* 모바일 대응 (반응형 수정) */
+        @media (max-width: 992px) { 
+            .about-content { flex-direction: column; align-items: center; text-align: center; } 
+            .profile-container { width: 220px; margin-bottom: 30px; } 
+            .about-text { width: 100%; }
+        }
         @media (max-width: 768px) { 
             nav { padding: 0.8rem 3%; } 
             .hero { height: 40vh; } 
-            .hero h1 { font-size: 1.7rem; } /* 모바일 제목 크기 최적화 */
+            .hero h1 { font-size: 1.7rem; } 
             .hero p { font-size: 1rem; } 
             .about-content, .gallery-section { padding: 30px; } 
             .career-list li { text-align: left; } 
@@ -114,7 +121,7 @@
             </div>
         </div>
         <div class="about-text">
-            <p>我们超越简单的疾病治疗，通过关注动物福利与农场环境，为养猪业设计可持续的利润结构。</p>
+            <p>我们超越简单的疾病治疗，通过关注动物福利与农场环境，为养猪业设计可持续의 利润结构。</p>
             <p><strong>理念:</strong> '长久相伴(可持续性)' 是决定农场未来 100 年的核心生存战略。</p>
             
             <div class="career-section">
@@ -162,13 +169,4 @@
             <h3>猪群健康</h3>
             <ul>
                 <li>定期访问及数据化疾病监测</li>
-                <li>生物安全系统 (Biosecurity) 建设</li>
-                <li>减少抗生素使用及预防性护理</li>
-            </ul>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="footer-names">함께오래피그클리닉 | Together Forever Swine Vet Clinic | 长久相伴养猪兽医服务中心</div>
-    <p>Email: zhuyisheng.vet@outlook.com | WeChat: dong
+                <li>生物安全系统 (Bi
