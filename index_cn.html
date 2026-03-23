@@ -7,19 +7,24 @@
     <style>
         :root { --p-color: #2e7d32; --s-color: #f5f5f5; --a-color: #ffd54f; --dark: #333; }
         body { font-family: 'Microsoft YaHei', sans-serif; margin: 0; line-height: 1.6; color: var(--dark); }
+        
+        /* 내비게이션 */
         nav { background: #fff; padding: 0.8rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000; }
-        .logo-link { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 45px; margin-right: 12px; }
-        .logo-text { font-weight: bold; font-size: 1.2rem; color: var(--p-color); }
+        .logo-link { display: flex; align-items: center; text-decoration: none; min-width: 0; flex-shrink: 1; }
+        .logo-img { height: 45px; margin-right: 12px; flex-shrink: 0; }
+        .logo-text { font-weight: bold; font-size: 1.2rem; color: var(--p-color); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        
         .nav-links { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
         .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: 0.3s; }
         .nav-links a:hover { color: var(--p-color); }
-        .lang-switch { display: flex; gap: 10px; align-items: center; }
-        .lang-switch a { text-decoration: none; display: block; opacity: 0.6; transition: opacity 0.3s, transform 0.3s; }
+        
+        .lang-switch { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+        .lang-switch a { text-decoration: none; display: block; opacity: 0.6; transition: 0.3s; }
         .lang-switch a:hover { opacity: 1; transform: scale(1.1); }
         .lang-switch a.active { opacity: 1; border: 2px solid var(--p-color); border-radius: 4px; padding: 2px; }
-        .flag-icon { width: 30px; height: auto; display: block; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+        .flag-icon { width: 30px; height: auto; display: block; }
         
+        /* 히어로 섹션 */
         .hero { 
             background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('main.png') no-repeat center/cover; 
             height: 50vh; 
@@ -35,7 +40,7 @@
         section { padding: 80px 10%; }
         h2 { text-align: center; color: var(--p-color); margin-bottom: 50px; font-size: 2.2rem; }
         
-        /* 소개 섹션 레이아웃 */
+        /* 소개 섹션 */
         .about-content { display: flex; align-items: flex-start; gap: 60px; background: var(--s-color); padding: 50px; border-radius: 25px; }
         .profile-container { flex-shrink: 0; text-align: center; width: 280px; }
         .director-img { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 5px solid white; object-fit: cover; }
@@ -45,17 +50,18 @@
         .director-title-cn { font-weight: normal; font-size: 0.9rem; opacity: 0.9; }
         
         .about-text { flex-grow: 1; }
-        .about-text p { color: #555; }
         .career-section { margin-top: 30px; }
         .career-section h4 { color: var(--p-color); border-left: 5px solid var(--a-color); padding-left: 10px; margin-bottom: 15px; text-align: left; }
         .career-list { list-style: none; padding: 0; margin: 0; text-align: left; }
         .career-list li { padding-left: 20px; position: relative; margin-bottom: 10px; color: #555; font-size: 0.95rem; }
         .career-list li::before { content: '✓'; color: var(--p-color); position: absolute; left: 0; font-weight: bold; }
 
+        /* 활동 갤러리 */
         .gallery-section { background: #fff; text-align: center; padding: 80px 10%; }
         .gallery-img-container { max-width: 1100px; margin: 0 auto; border-radius: 25px; overflow: hidden; box-shadow: 0 5px 25px rgba(0,0,0,0.1); border: 5px solid white; }
         .gallery-img { width: 100%; height: auto; display: block; object-fit: cover; }
 
+        /* 서비스 카드 */
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .service-card { border: 1px solid #eee; padding: 35px; border-radius: 20px; background: #fff; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .service-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
@@ -66,7 +72,7 @@
         footer { background: #2a2a2a; color: #b0b0b0; padding: 50px 10%; text-align: center; }
         .footer-names { color: white; font-weight: bold; margin-bottom: 15px; font-size: 1.1rem; }
         
-        /* 모바일 대응 (반응형 수정) */
+        /* 모바일 대응 */
         @media (max-width: 992px) { 
             .about-content { flex-direction: column; align-items: center; text-align: center; } 
             .profile-container { width: 220px; margin-bottom: 30px; } 
@@ -74,13 +80,15 @@
         }
         @media (max-width: 768px) { 
             nav { padding: 0.8rem 3%; } 
+            .logo-img { height: 35px; margin-right: 8px; }
+            /* 상단 로고 옆 이름 사이즈 조정 (한 줄 표시용) */
+            .logo-text { font-size: 0.85rem; } 
             .hero { height: 40vh; } 
+            /* 히어로 섹션 제목 사이즈 조정 */
             .hero h1 { font-size: 1.7rem; } 
             .hero p { font-size: 1rem; } 
             .about-content, .gallery-section { padding: 30px; } 
-            .career-list li { text-align: left; } 
             .nav-links { display: none; } 
-            .logo-text { font-size: 1rem; } 
             .flag-icon { width: 25px; } 
             .gallery-img-container { border-radius: 15px; border: 3px solid white; } 
         }
@@ -121,7 +129,7 @@
             </div>
         </div>
         <div class="about-text">
-            <p>我们超越简单的疾病治疗，通过关注动物福利与农场环境，为养猪业设计可持续의 利润结构。</p>
+            <p>我们超越简单的疾病治疗，通过关注动物福利与农场环境，为养猪业设计可持续的利润结构。</p>
             <p><strong>理念:</strong> '长久相伴(可持续性)' 是决定农场未来 100 年的核心生存战略。</p>
             
             <div class="career-section">
@@ -153,7 +161,7 @@
             <h3>繁殖技术</h3>
             <ul>
                 <li>后备猪管理 (引入及驯化优化)</li>
-                <li>配种管理 (提高受胎率的精密技术)</li>
+                <li>配종管理 (提高受胎率的精密技术)</li>
                 <li>分娩舍管理 (提高仔猪成活率)</li>
             </ul>
         </div>
@@ -169,4 +177,18 @@
             <h3>猪群健康</h3>
             <ul>
                 <li>定期访问及数据化疾病监测</li>
-                <li>生物安全系统 (Bi
+                <li>生物安全系统 (Biosecurity) 建设</li>
+                <li>减少抗生素使用及预防性护理</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-names">함께오래피그클리닉 | Together Forever Swine Vet Clinic | 长久相伴养猪兽医服务中心</div>
+    <p>Email: zhuyisheng.vet@outlook.com | WeChat: dongyu_zhu888</p>
+    <p>&copy; 2026 Together Forever Swine Vet Clinic. All Rights Reserved. 🐷</p>
+</footer>
+
+</body>
+</html>
